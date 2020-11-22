@@ -1,2 +1,2 @@
-# vue-nodejs-aks
-Example Project on how to deploy vue app with nodejs backend on Azure AKS
+# vuejs-nodejs-example
+Example Project to demonstrate how to use Vue.js with nodejs backend

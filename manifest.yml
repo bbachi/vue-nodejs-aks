@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: vue-webapp
+  name: vue-webapp
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: vue-webapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: vue-webapp
+    spec:
+      containers:
+      - image: regfrontend.azurecr.io/aksdemo/vue-nodejs:v1
+        name: webapp
+        imagePullPolicy: Always
+        resources: {}
+        ports:
+          - containerPort: 3080 
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: vue-webapp
+  labels:
+    run: vue-webapp
+spec:
+  ports:
+  - port: 3080
+    protocol: TCP
+  selector:
+    app: vue-webapp
+  type: LoadBalancer
